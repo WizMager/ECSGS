@@ -8,5 +8,7 @@ namespace Components
     {
         public CharacterController characterController;
         public float speed;
+        public Vector3 velocity;
+        public float gravity;
     }
 }

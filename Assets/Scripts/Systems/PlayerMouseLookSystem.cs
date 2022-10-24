@@ -21,7 +21,6 @@ namespace Systems
 
                 _startTransformRotation = model.bodyTransform.rotation;
             }
-            //_startTransformRotation = _mouseLookFilter.GetEntity(0).Get<ModelComponent>().bodyTransform.rotation;
         }
         
         public void Run()

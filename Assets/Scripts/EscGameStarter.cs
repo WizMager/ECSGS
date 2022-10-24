@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Events;
 using Leopotam.Ecs;
 using Systems;
 using UnityEngine;
@@ -32,16 +33,20 @@ public class EscGameStarter : MonoBehaviour
 
     private void AddOneFrame()
     {
-        
+        _systems.OneFrame<JumpEvent>();
     }
 
     private void AddSystems()
     {
         _systems
+            .Add(new CursorLockSystem())
+            .Add(new PlayerJumpSystem())
+            .Add(new PlayerCheckGroundSystem())
             .Add(new PlayerMoveInputSystem())
             .Add(new PlayerMouseInputSystem())
-            .Add(new MovementSystem())
-            .Add(new PlayerMouseLookSystem());
+            .Add(new PlayerMouseLookSystem())
+            .Add(new PlayerJumpSendEventSystem())
+            .Add(new MovementSystem());
     }
 
     private void Update()
