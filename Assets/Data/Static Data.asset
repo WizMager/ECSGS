@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76fe723a96d64c368fc4c13c09994111, type: 3}
   m_Name: Static Data
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 3377032493991924429, guid: 89024fd7bede75044bfb535301bfcacd, type: 3}
+  playerPrefab: {fileID: 7673487251499248760, guid: c98043d57e0190845b790d7b92990bee, type: 3}
   playerMoveSpeed: 5

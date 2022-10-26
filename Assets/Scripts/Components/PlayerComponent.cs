@@ -6,6 +6,7 @@ namespace Components
     {
         public Rigidbody playerRigidbody;
         public Transform playerTransform;
+        public Animator playerAnimator;
         public float moveSpeed;
     }
 }

@@ -22,6 +22,7 @@ namespace Systems
                 Quaternion.identity);
             playerComponent.playerRigidbody = playerGameObject.GetComponent<Rigidbody>();
             playerComponent.playerTransform = playerGameObject.GetComponent<Transform>();
+            playerComponent.playerAnimator = playerGameObject.GetComponent<Animator>();
             playerComponent.moveSpeed = _staticData.playerMoveSpeed;
         }
     }
