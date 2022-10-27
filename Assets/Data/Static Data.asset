@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Static Data
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 7673487251499248760, guid: c98043d57e0190845b790d7b92990bee, type: 3}
-  playerMoveSpeed: 5
+  playerMoveSpeed: 10
+  smoothTime: 1
+  cameraOffset: {x: 0, y: 35, z: 0}

@@ -1,7 +1,9 @@
 ﻿using Components;
 using Data;
 using Leopotam.Ecs;
+using MonoScriptComponents;
 using UnityEngine;
+using Views;
 
 namespace Systems
 {
@@ -17,13 +19,30 @@ namespace Systems
 
             ref var playerComponent = ref playerEntity.Get<PlayerComponent>();
             ref var playerInputDataComponent = ref playerEntity.Get<PlayerInputDataComponent>();
+            ref var hasWeapon = ref playerEntity.Get<HasWeapon>();
+            ref var animator = ref playerEntity.Get<AnimatorReferenceComponent>();
 
             var playerGameObject = Object.Instantiate(_staticData.playerPrefab, _sceneData.playerSpawnPoint.position,
                 Quaternion.identity);
+            playerGameObject.GetComponent<PlayerView>().Entity = playerEntity;
             playerComponent.playerRigidbody = playerGameObject.GetComponent<Rigidbody>();
             playerComponent.playerTransform = playerGameObject.GetComponent<Transform>();
-            playerComponent.playerAnimator = playerGameObject.GetComponent<Animator>();
+            animator.animator = playerGameObject.GetComponent<Animator>();
             playerComponent.moveSpeed = _staticData.playerMoveSpeed;
+
+            var weaponEntity = _world.NewEntity();
+            hasWeapon.weapon = weaponEntity;
+            var weaponView = playerGameObject.GetComponentInChildren<WeaponSettings>();
+            ref var weapon = ref weaponEntity.Get<WeaponComponent>();
+            weapon.owner = playerEntity;
+            weapon.projectilePrefab = weaponView.projectilePrefab;
+            weapon.projectileRadius = weaponView.projectileRadius;
+            weapon.projectileRoot = weaponView.projectileRoot;
+            weapon.projectileSpeed = weaponView.projectileSpeed;
+            weapon.totalAmmo = weaponView.totalAmmo;
+            weapon.weaponDamage = weaponView.weaponDamage;
+            weapon.currentInMagazine = weaponView.currentInMagazine;
+            weapon.maxInMagazine = weaponView.maxInMagazine;
         }
     }
 }

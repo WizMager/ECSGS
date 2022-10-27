@@ -1,6 +1,5 @@
 ﻿using Components;
 using Leopotam.Ecs;
-using UnityEngine;
 
 namespace Systems
 {
@@ -17,7 +16,7 @@ namespace Systems
                 
                 var direction = (playerComponent.playerTransform.forward * playerInputDataComponent.moveInput.z +
                                  playerComponent.playerTransform.right * playerInputDataComponent.moveInput.x).normalized;
-                Debug.Log(direction);
+                
                 playerComponent.playerRigidbody.AddForce(direction * playerComponent.moveSpeed);
             }
         }

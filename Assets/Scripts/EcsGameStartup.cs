@@ -24,6 +24,12 @@ public class EcsGameStartup : MonoBehaviour
                      .Add(new PlayerInputSystem())
                      .Add(new PlayerRotationSystem())
                      .Add(new PlayerAnimationSystem())
+                     .Add(new CameraFollowSystem())
+                     .Add(new PlayerShootSystem())
+                     .Add(new WeaponShootSystem())
+                     .Add(new SpawnProjectileSystem())
+                     .Add(new ProjectileMoveSystem())
+                     .Add(new ProjectileHitSystem())
                      .Inject(sceneData)
                      .Inject(staticData)
                      .Inject(runtimeData);

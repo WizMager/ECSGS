@@ -7,5 +7,7 @@ namespace Data
     {
         public GameObject playerPrefab;
         public float playerMoveSpeed;
+        public float smoothTime;
+        public Vector3 cameraOffset;
     }
 }
