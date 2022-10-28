@@ -24,6 +24,7 @@ public class EcsGameStartup : MonoBehaviour
 
               _updateSystems
                      .Add(new PlayerInitSystem())
+                     .Add(new EnemyInitSystem())
                      .OneFrame<TryReload>()
                      .Add(new PlayerInputSystem())
                      .Add(new PlayerRotationSystem())
@@ -35,6 +36,10 @@ public class EcsGameStartup : MonoBehaviour
                      .Add(new ProjectileHitSystem())
                      .Add(new ReloadSystem())
                      .Add(new PauseSystem())
+                     .Add(new EnemyIdleSystem())
+                     .Add(new EnemyFollowSystem())
+                     .Add(new DamageSystem())
+                     .Add(new EnemyDeathSystem())
                      .Inject(sceneData)
                      .Inject(staticData)
                      .Inject(ui)

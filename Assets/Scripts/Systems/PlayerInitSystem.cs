@@ -14,6 +14,7 @@ namespace Systems
         private SceneData _sceneData;
         private StaticData _staticData;
         private UI _ui;
+        private RuntimeData _runtimeData;
         
         public void Init()
         {
@@ -23,6 +24,7 @@ namespace Systems
             ref var playerInputDataComponent = ref playerEntity.Get<PlayerInputDataComponent>();
             ref var hasWeapon = ref playerEntity.Get<HasWeapon>();
             ref var animator = ref playerEntity.Get<AnimatorReferenceComponent>();
+            ref var transformRef = ref playerEntity.Get<TransformReferenceComponent>();
 
             var playerGameObject = Object.Instantiate(_staticData.playerPrefab, _sceneData.playerSpawnPoint.position,
                 Quaternion.identity);
@@ -31,6 +33,8 @@ namespace Systems
             playerComponent.playerTransform = playerGameObject.GetComponent<Transform>();
             animator.animator = playerGameObject.GetComponent<Animator>();
             playerComponent.moveSpeed = _staticData.playerMoveSpeed;
+            transformRef.Transform = playerComponent.playerTransform;
+            _runtimeData.PlayerEntity = playerEntity;
 
             var weaponEntity = _world.NewEntity();
             hasWeapon.weapon = weaponEntity;
