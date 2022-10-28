@@ -2,6 +2,7 @@
 using Data;
 using Leopotam.Ecs;
 using MonoScriptComponents;
+using UIScripts;
 using UnityEngine;
 using Views;
 
@@ -12,6 +13,7 @@ namespace Systems
         private EcsWorld _world;
         private SceneData _sceneData;
         private StaticData _staticData;
+        private UI _ui;
         
         public void Init()
         {
@@ -43,6 +45,7 @@ namespace Systems
             weapon.weaponDamage = weaponView.weaponDamage;
             weapon.currentInMagazine = weaponView.currentInMagazine;
             weapon.maxInMagazine = weaponView.maxInMagazine;
+            _ui.gameScreen.SetAmmo(weapon.currentInMagazine, weapon.totalAmmo);
         }
     }
 }

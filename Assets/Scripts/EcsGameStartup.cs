@@ -1,13 +1,16 @@
-﻿using System;
-using Data;
+﻿using Data;
+using EventComponents;
 using Leopotam.Ecs;
 using Systems;
+using UIScripts;
 using UnityEngine;
 
 public class EcsGameStartup : MonoBehaviour
 {
        [SerializeField] private SceneData sceneData;
        [SerializeField] private StaticData staticData;
+       [SerializeField] private UI ui;
+       
        private EcsWorld _world;
        private EcsSystems _updateSystems;
        private EcsSystems _fixedUpdateSystems;
@@ -21,6 +24,7 @@ public class EcsGameStartup : MonoBehaviour
 
               _updateSystems
                      .Add(new PlayerInitSystem())
+                     .OneFrame<TryReload>()
                      .Add(new PlayerInputSystem())
                      .Add(new PlayerRotationSystem())
                      .Add(new PlayerAnimationSystem())
@@ -30,8 +34,10 @@ public class EcsGameStartup : MonoBehaviour
                      .Add(new ProjectileMoveSystem())
                      .Add(new ProjectileHitSystem())
                      .Add(new ReloadSystem())
+                     .Add(new PauseSystem())
                      .Inject(sceneData)
                      .Inject(staticData)
+                     .Inject(ui)
                      .Inject(runtimeData);
 
               _fixedUpdateSystems

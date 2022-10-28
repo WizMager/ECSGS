@@ -1,5 +1,5 @@
 ﻿using Components;
-using Components.Ignore;
+using EventComponents;
 using Leopotam.Ecs;
 using UnityEngine;
 

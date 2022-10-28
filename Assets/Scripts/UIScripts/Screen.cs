@@ -1,0 +1,12 @@
+﻿using UnityEngine;
+
+namespace UIScripts
+{
+    public abstract class Screen : MonoBehaviour
+    {
+        public virtual void Show(bool state = true)
+        {
+            gameObject.SetActive(state);
+        }
+    }
+}

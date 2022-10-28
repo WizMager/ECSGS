@@ -1,5 +1,5 @@
 ﻿using Components;
-using Components.Ignore;
+using EventComponents;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ namespace Systems
     public class PlayerInputSystem : IEcsRunSystem
     {
         private EcsFilter<PlayerInputDataComponent, HasWeapon> _filter;
+        private EcsWorld _world;
 
         public void Run()
         {
@@ -22,12 +23,17 @@ namespace Systems
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     ref var weapon = ref hasWeapon.weapon.Get<WeaponComponent>();
-
+                    
                     if (weapon.currentInMagazine < weapon.maxInMagazine)
                     {
                         ref var entity = ref _filter.GetEntity(i);
                         entity.Get<TryReload>();
                     }
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    _world.NewEntity().Get<PauseGameEvent>();
                 }
             }
         }

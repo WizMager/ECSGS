@@ -1,6 +1,6 @@
 ﻿using Leopotam.Ecs;
 
-namespace Components.Ignore
+namespace EventComponents
 {
     public struct Shoot : IEcsIgnoreInFilter
     {

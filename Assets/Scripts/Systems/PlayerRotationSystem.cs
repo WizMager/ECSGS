@@ -9,11 +9,14 @@ namespace Systems
     {
         private SceneData _sceneData;
         private EcsFilter<PlayerComponent> _filter;
+        private RuntimeData _runtimeData;
 
         public void Run()
         {
             foreach (var i in _filter)
             {
+                if (_runtimeData.IsPaused) return;
+                
                 ref var playerComponent = ref _filter.Get1(i);
 
                 var plane = new Plane(Vector3.up, playerComponent.playerTransform.position);
